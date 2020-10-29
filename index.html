@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eba & Yom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Lobster&family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">    
+    <style>
+        body{
+            background-image: url('3.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .flex{
+            display: flex;
+            flex-flow: column;
+            flex: 1;
+            text-align: center;
+            background: rgba(0,0,0,.4);
+            margin: 4px;
+            color: white;
+            border-radius: 10px;
+        }
+        .count {
+            font-size: 3em;
+            font-family: 'Open Sans Condensed', sans-serif;
+        }
+        .time{
+            margin-top: 1em;
+            font-family: 'Balsamiq Sans', cursive;
+        }
+        li{
+            display: inline
+        }
+        .container{
+            display: flex;
+            justify-content: space-between;
+            margin: 1em 2em
+        }
+        h1{
+            font-family: 'Lobster', cursive;
+            text-align: center;
+            text-shadow: 2px 2px 5px black;
+            color: white;
+            margin-top: 3em;
+        }
+        #quote{
+            background: rgba(0,0,0,.8);
+            color: white;
+            font-size: 1.2em;
+            border-radius: 15px;
+            margin: 16px;
+            padding: 16px 12px;
+            margin-top: 3em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Yom</h1>
+    <div class="container">
+        <div class="flex">
+            <span class="count" id="day"></span>
+            <span class="time">Days</span>
+        </div>
+    
+        <div class="flex">
+            <span class="count" id="hr"></span>
+            <span class="time">Hours</span>
+        </div>
+    
+        <div class="flex">
+            <span class="count" id="min"></span>
+            <span class="time">Min</span>
+        </div>
+    
+        <div class="flex">
+            <span class="count" id="sec"></span>
+            <span class="time">Sec</span>
+        </div>
+    </div>
+    <div id="quote">
+        <i id="text"></i>
+    </div>
+    <script type='text/javascript'>
+        const day = "Nov 5, 2020 18:00:00"
+        const sec = 1000; 
+        const min = sec * 60;
+        const hr = min * 60;
+        const d = hr * 24;
+        const loves = [
+            "I love you not only for what you are, but for what I am when I am with you. I love you not only for what you have made of yourself, but for what you are making of me. I love you for the part of me that you bring out.",
+            "I will love you all my life and when I die, I will still love you through eternity and beyond. ",
+            "I love you because I know you're always there, there to catch me when I fall, there to listen when I need you, there when I feel alone.",
+            "I Love you with the breath, the smiles and the tears of all my life. ",
+            "For you see, each day I love you more. Today more than yesterday and less than tomorrow. ",
+            "I will walk beside you, I will push you forward from behind and I will run ahead and encourage you forward - all because I love you.",
+            "Don't go trying some new fashion Don't change the color of your hair. . . . I could not love you any better I love you just the way you are. "
+        ]
+        
+        setInterval(() => {
+            const time_distance = new Date(day).getTime() - new Date().getTime();
+    
+            const _day = Math.floor(time_distance / d);
+            const _hr = Math.floor((time_distance % d) / hr);
+            const _min = Math.floor((time_distance % hr) / min);
+            const _sec = Math.floor((time_distance % min ) / sec);
+            document.getElementById('text').innerText = loves[_day];
+            document.getElementById('day').innerText = _day;
+            document.getElementById('hr').innerText = _hr;
+            document.getElementById('min').innerText = _min;
+            document.getElementById('sec').innerText = _sec;
+        }, sec);
+        
+    </script>
+</body>
+</html>
